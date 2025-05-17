@@ -13,7 +13,7 @@ decreaseBtn.addEventListener('click', () => {
 
 increaseBtn.addEventListener('click', () => {
     let currentValue = parseInt(counterInput.value, 10);
-    if (currentValue < 9) {
+    if (currentValue < 20) {
         counterInput.value = currentValue + 1;
     }
     updateButtons();
@@ -21,7 +21,7 @@ increaseBtn.addEventListener('click', () => {
 
 function updateButtons() {
     decreaseBtn.disabled = parseInt(counterInput.value, 10) === 0;
-    increaseBtn.disabled = parseInt(counterInput.value, 10) === 9;
+    increaseBtn.disabled = parseInt(counterInput.value, 10) === 20;
 }
 
 // Task 2
@@ -32,7 +32,7 @@ for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
         const td = document.createElement('td');
         if ((row + col) % 2 === 0) {
-            td.style.backgroundColor = 'white';
+            td.style.backgroundColor = 'White';
         } else {
             td.style.backgroundColor = 'black';
         }
@@ -48,6 +48,7 @@ function updateTimer() {
     const now = new Date();
     const targetDate = new Date('February 1, 2025 00:00:00');
     const diff = targetDate - now;
+    console.log(diff);
 
     if (diff <= 0) {
         timerDiv.textContent = 'Time\'s up!';
@@ -58,7 +59,6 @@ function updateTimer() {
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
     timerDiv.textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 }
 
